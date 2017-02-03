@@ -1,6 +1,9 @@
 Top 3 Families:
 
-1. Leporidae - rabbit 
+1. Elephantidae - elephants
+species: 206
+Command: tail -n +19 elephant_data.csv | cut -d "," -f 6 | sort |uniq | wc -l
+Leporidae - rabbit 
 species: 172
 Command: tail -n +19 rabbit_data.csv | cut -d "," -f 6 | sort |uniq | wc -l
 
@@ -8,7 +11,8 @@ Command: tail -n +19 rabbit_data.csv | cut -d "," -f 6 | sort |uniq | wc -l
 species: 200
 Command: tail -n +19 pig_data.csv | cut -d "," -f 6 | sort |uniq | wc -l
 
-3. Elephantidae - elephants
-species: 206
-Command: tail -n +19 elephant_data.csv | cut -d "," -f 6 | sort |uniq | wc -l
+3. Leporidae - rabbit 
+species: 172
+Command: tail -n +19 rabbit_data.csv | cut -d "," -f 6 | sort |uniq | wc -l
 
+For this project, I want to look at the diversity over time graphs. I may also want to look at the specific genus and plot the duration of the occurances for each. 
