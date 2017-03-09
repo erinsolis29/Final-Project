@@ -1,0 +1,48 @@
+---
+title: "r-final-project.Rmd"
+output: html_document
+---
+
+# Heteromyidae
+
+Opening the file and checking that the data table is correct.
+
+```{r}
+#this will get the data from the csv file we made from python
+library(ggplot2)
+setwd("/home/eeb177-student/Desktop/eeb-177/homework/canids")
+
+rats <- read.csv("/home/eeb177-student/Desktop/eeb-177/homework/canids/rat-ranges.csv", header =F, as.is = T)
+
+names(rats) <- c("genus", "species", "minage", "maxage")
+head(rats)
+```
+
+Creating the actual graph.
+
+```{r}
+rats_occ <- ggplot(rats, aes( species, ymin = maxage, ymax=minage, colour = genus))
+rats_occ <- rats_occ + geom_linerange()
+rats_occ <- rats_occ + theme(legend.position="none") # this will get rid of the legend on the graph
+rats_occ <- rats_occ + coord_flip() # this will flip the axis to maket he graph go the other direction
+rats_occ <- rats_occ +  theme(axis.text.y = element_text(size=3)) # makes the text a more readable size
+rats_occ <- rats_occ + theme(axis.ticks.y=element_blank()) # removes the tick marks that are present on the y axis
+rats_occ <- rats_occ + scale_y_continuous(limits=c(0, 35), expand = c(0, 0), breaks=c(0, 5, 10, 15, 20, 25, 30, 35, 40)) # makes the graph fit more by removing the excess white space
+rats_occ <- rats_occ + labs(title = "Heteromyidae Fossil Occurrences", x = "Species", y = "Ma ago") + theme(plot.title = element_text(hjust = 0.5, size=22, face = "bold"), axis.title =element_text(size=20))  # adding in the title and axis labels to the graph
+rats_occ
+```
+
+Saving the graph to in a PDF format.
+```{r}
+ggsave(filename = "rat-occ.pdf", plot = rats_occ)
+```
+
+
+
+
+
+
+
+
+
+
